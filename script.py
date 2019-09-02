@@ -19,10 +19,13 @@ def check_classes():
 
         # check if the first letter of class is Uppercase.
         if cls[0][0].isupper() and not cls[0] == 'HolidayBase':
-            is_provinces = False
-            is_states = False
             # create new object with class
             obj = cls[1]()
+
+            if not obj.__class__.__base__.__name__ == 'HolidayBase':
+                continue
+            is_provinces = False
+            is_states = False
 
             # check if the object has PROVICES or not
             try:
